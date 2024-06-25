@@ -134,32 +134,54 @@ This project aims to create an application for monitoring and sharing stock port
 
 ## Development Environment Setup
 
-### Front-end (React)
+### Front-end Setup (React)
 
 ```bash
-npx create-react-app stock-portfolio-app
-cd stock-portfolio-app
-npm install axios react-router-dom
+npm create vite@latest frontend -- --template react
+cd frontend
+npm install axios react-router-dom jwt-decode
 ```
 
-### Back-end (Django)
+### Run Front-end (Django)
 
 ```bash
-pip install django djangorestframework psycopg2
-django-admin startproject stock_portfolio_backend
-cd stock_portfolio_backend
-django-admin startapp accounts
-django-admin startapp stocks
+npm install
+npm run dev
+```
+
+### Back-end Setup (Django)
+
+```bash
+python3 -m venv env
+source/env/bin/activate
+pip install -r requirements.txt
+django-admin startproject backend
+cd backend
+python manage.py startapp api
+```
+
+### Back-end migrations (use these commands when there are any significant changes involving the data model) (Django)
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### Run Back-end server (Django)
+
+```bash
+python manage.py runserver
 ```
 
 ### Database (PostgreSQL)
 
 - Install PostgreSQL and set up a new database for the project.
-- Configure Django to use PostgreSQL in `settings.py`.
+- Configured Django to use PostgreSQL in `settings.py`.
+- PostgreSQL managed by choreo.dev website
 
 ## Initial Setup
 
-### Project Structure
+### Project Structure (Potential)
 
 **Front-end**:
 
@@ -203,12 +225,13 @@ stock_portfolio_backend/
 
 ## Contributing
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
+1. Fork repository.
+2. Create a new branch using `git checkout -b feature-branch`.
 3. Make your changes.
-4. Commit your changes (`git commit -am 'Add new feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Create a new Pull Request.
+4. Add all changes using `git add .`.
+5. Commit your changes using `git commit -m 'Add new feature'`.
+6. Push to the branch `git push origin feature-branch`.
+7. Create a new Pull Request.
 
 ## License
 
